@@ -53,11 +53,14 @@ int shape[7][4][18] =
 			{0,1,0,0, 0,1,0,0, 1,1,0,0, 0,0,0,0, 2,1}},
 	};
 
+
+
+
 //指定位置，输出图形  n　m位置　　　sh形状    方向
 void print_mode_shape(int n,int m,int sh,int direct_x, int n_color)
 {//指定位置输出方块
 	//n ,m 方块坐标
-	printf("[\033%d;%dH\033[0m", n, m );
+	//printf("[\033%d;%dH\033[0m", n, m );
 	int i ,j;
 	int k = 0;
 	for(i = 0; i < 4; i++)
@@ -65,8 +68,8 @@ void print_mode_shape(int n,int m,int sh,int direct_x, int n_color)
 		for(j = 0; j < 4; j++ )
 		{
 			if(shape[sh][direct_x][k++]==1){
-				printf("\033[%d;%dH\033[0m", n+i, m+2*j+2 );
-				printf("\033[%dm[]\033[0m",n_color);
+				printf("\033[%d;%dH\033[%dm[]\033[0m", n+i, m+2*j+2, n_color );
+				//printf("\033[%dm[]\033[0m",n_color);
 			}
 			
 		}
@@ -78,7 +81,7 @@ void print_mode_shape(int n,int m,int sh,int direct_x, int n_color)
 void remove_mode_shape(int n,int m,int sh,int direct_x)
 {
 	//n ,m 方块坐标
-	printf("[\033%d;%dH\033[0m", n, m );
+	//printf("[\033%d;%dH\033[0m", n, m );
 	int i ,j;
 	int k = 0;
 	for(i = 0; i < 4 ; i++)
@@ -95,19 +98,26 @@ void remove_mode_shape(int n,int m,int sh,int direct_x)
 	printf("\033[%d;%dH\033[0m",35, 70);
 }
 
+
+
 //显示下一个出来的方块
 void print_next()
 {//now_x,y
-	static int bef_num=0,bef_mode=0,bef_color=42;
-	n_num = bef_num;
-	n_mode = bef_mode;
-	n_color = bef_color;
-	remove_mode_shape(7,44,bef_num,direct_c);
+	static int b_num=1,b_mode=2,b_color=43;
+//	printf("!                     !n_num=%d!b_num=%d!",n_num,b_num);
+	n_num = b_num;
+	n_mode = b_mode;
+	n_color = b_color;
+//	static int a = 0;
+	remove_mode_shape(7,44, n_num, n_mode);
 	
-	bef_num = random()%7;
-	bef_mode = random()%4;
-	bef_color = random()%6+41;
-	print_mode_shape(7,44,bef_num,direct_c, bef_color);
+	b_num = random()%7;
+	b_mode = random()%4;
+	b_color = random()%4+41;
+	print_mode_shape(7,44, b_num, b_mode, b_color);
+//	printf("!                 a= %d!n_num=%d!b_num=%d!",a++,n_num,b_num);
+	now_x = 5;
+	now_y = 9;
 }
 
 //下移动作

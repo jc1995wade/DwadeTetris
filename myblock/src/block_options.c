@@ -15,6 +15,8 @@ int befor_y = 9;
 int befor_direct_c = 0;
 int direct_c = 0;
 int m_score = 0;
+int m_level = 1;
+int counter = 24;//指向容器内最高行数
 //初始化定时器
 void set_timer()
 {
@@ -30,8 +32,6 @@ void signal_handler(int m)
 {
 	//下移操作	
 	if(1 == judge_down()){
-	  now_x = 5;
-	  now_y = 9;
 	  print_next();
 	}
 	else{

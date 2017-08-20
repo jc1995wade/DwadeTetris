@@ -15,6 +15,8 @@ void block_display_clear()
 			printf("\033[%d;%dH\033[0m",i ,j);
 			printf("\033[45m \033[0m");
 		}
+//	printf("\033[2J");
+
 }
 
 void block_display_frame()
@@ -54,10 +56,10 @@ void block_display_frame()
 	/*右下框起始坐标  :11*41   大小:6*14         */
 	//显示分数
 	printf("\033[%d;%dH\033[0m",11+5,41+2);
-	printf("\033[34m分数:  0  \033[0m");
+	printf("\033[32m分数:    \033[0m");
 	//显示等级
 	printf("\033[%d;%dH\033[0m",11+10,41+2);
-	printf("\033[34m等级:  5  \033[0m");
+	printf("\033[32m等级:    \033[0m");
 	
 	printf("\033[%d;%dH\033[0m",Block_weight, Block_lenth);	
 }

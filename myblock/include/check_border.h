@@ -1,6 +1,9 @@
 #ifndef _CHECK_BORDER_H_
 #define _CHECK_BORDER_H_
 
+void print_score();
+void print_level();
+
 int detection_down();
 int detection_right();
 int detection_left();
@@ -13,4 +16,7 @@ int judge_left();
 int judge_right();
 int judge_direct();
 int cal_coord(int *x, int *y);
+void distory_line();
+
+
 #endif
